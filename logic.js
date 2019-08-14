@@ -1,3 +1,17 @@
+// Set current day and time
+$(document).ready(function(){
+    setInterval(update, 1000);
+})
+
+function update() {
+    var localTime = moment().format('h:mm:ss A');
+    $("#local-time").text(localTime);
+    };
+
+var currentDay = moment().format('MMMM D YYYY');
+$("#current-day").text(currentDay);
+
+
 // train scheduler logic.js
   // Firebase config_____________________________________
   var firebaseConfig = {
@@ -14,7 +28,7 @@
 
   var database = firebase.database();
 
-  $("#newEmployee").on("click", function(event) {
+  $("#newTrain").on("click", function(event) {
       event.preventDefault();
     var newTrain = $("#train").val().trim();
     var newDestination = $("#destination").val().trim();
@@ -44,10 +58,11 @@
         console.log(snapshot.val());
     
         // Logic for calculating Next Arrival / Minutes Away (or next departure)   
-
-
-
-
+//         compare startNow to moment() current time 
+//          
+// 
+var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
+console.log("this time is: " + currentTime);
     // logic for building next row in table
         var nextRow = $("<tr>");
         var nameDisplay = $("<td>" + nameNow + "</td>");
