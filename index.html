@@ -29,47 +29,45 @@
     <div id="container">
             <div class="jumbotron jumbotron-fluid">
                     <div class="container">
-                      <h1 class="display-4">Time Sheet</h1>
-                      <p class="lead">A directory of employee billable hours</p>
+                      <h1 class="display-4">Train Schedules</h1>
+                      <p class="lead">A directory of train frequencies and arrival times</p>
                     </div>
                   </div>
-                        <h5 class="card-title">Current Employees</h5>
+                        <h5 class="card-title">Current Train Schedule</h5>
                         <div class="container">
                                 <table class="table">
                                         <thead>
                                           <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Start Date</th>
-                                            <th scope="col">Months Worked</th>
-                                            <th scope="col">Monthly Rate</th>
-                                            <th scope="col">Total Billed</th>
+                                            <th scope="col">Train Name</th>
+                                            <th scope="col">Destination</th>
+                                            <th scope="col">Frequency (min)</th>
+                                            <th scope="col">Next Arrival</th>
+                                            <th scope="col">Minutes Away</th>
                                           </tr>
                                         </thead>
-                                        <tbody id="new-emp-row">
+                                        <tbody id="new-train-row">
                                         </tbody>
                                       </table>
                               </div>
                               <hr>
                               <form>
                                     <div class="form-group">
-                                      <label for="exampleInputEmail1">Employee Name</label>
-                                      <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Employee Name">
-                                      <small id="name" class="form-text text-muted">Enter Employee Name Here.</small>
+                                      <label >Train Name</label>
+                                      <input type="train-name-input" class="form-control" id="train">
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputPassword1">Role</label>
-                                      <input type="role" class="form-control" id="role" placeholder="Role">
+                                      <label>Destination</label>
+                                      <input type="role" class="form-control" id="destination">
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputPassword1">start date</label>
-                                      <input type="start date" class="form-control" id="start-date" placeholder="DD-MM-YYYY">
+                                      <label>First Train Time (HH:mm)-military time</label>
+                                      <input type="start time" class="form-control" id="start-time" placeholder="First train starting time">
                                     </div>
                                     <div class="form-group">
-                                      <label for="exampleInputPassword1">Monthly Rate</label>
-                                      <input type="monthly rate" class="form-control" id="monthly-rate" placeholder="Monthly Rate">
+                                      <label>Frequency(minutes)</label>
+                                      <input type="monthly rate" class="form-control" id="frequency" placeholder="eg. 30">
                                     </div>
-                                    <button type="submit" id="newEmployee" class="btn btn-primary">Submit</button>
+                                    <button type="submit" id="newTrain" class="btn btn-primary">Submit</button>
                                   </form>
                       </div>
 
