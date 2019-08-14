@@ -16,44 +16,47 @@
 
   $("#newEmployee").on("click", function(event) {
       event.preventDefault();
-    var newName = $("#name").val().trim();
-    var newRole = $("#role").val().trim();
-    var newStart = $("#start-date").val().trim();
-    var newRate = $("#monthly-rate").val().trim();
+    var newTrain = $("#train").val().trim();
+    var newDestination = $("#destination").val().trim();
+    var newStart = $("#start-time").val().trim();
+    var newFreq = $("#frequency").val().trim();
 
     database.ref().push({
-        name: newName,
-        role: newRole,
+        name: newTrain,
+        destination: newDestination,
         start: newStart,
-        rate: newRate,
+        frequency: newFreq,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
     // empty the form on submit 
-    $("#name").val("");
-    $("#role").val("");
-    $("#start-date").val("");
-    $("#monthly-rate").val("");
+    $("#train").val("");
+    $("#destination").val("");
+    $("#start-time").val("");
+    $("#frequency").val("");
 })
 // database ref retrieves train data to display
     database.ref().on("child_added", function(snapshot){
         // 
         var nameNow = snapshot.val().name;
-        var roleNow = snapshot.val().role;
+        var destNow = snapshot.val().destination;
         var startNow = snapshot.val().start;
-        var rateNow = snapshot.val().rate;
+        var freqNow = snapshot.val().frequency;
         console.log(snapshot.val());
+    
+        // Logic for calculating Next Arrival / Minutes Away (or next departure)   
 
 
-    // logic for builing next row in table
+
+
+    // logic for building next row in table
         var nextRow = $("<tr>");
         var nameDisplay = $("<td>" + nameNow + "</td>");
-        var roleDisplay = $("<td>" + roleNow + "</td>");
-        var startDisplay = $("<td>" + startNow + "</td>");
-        var monthsDisplay = $("<td>#</td>");
-        var rateDisplay = $("<td>" + rateNow + "</td>");
-        var totalDisplay = $("<td>#</td>");
-        var nextEmployee = nextRow.append(nameDisplay, roleDisplay, startDisplay, monthsDisplay, rateDisplay, totalDisplay);
-        $("#new-emp-row").append(nextEmployee);
+        var destDisplay = $("<td>" + destNow + "</td>");
+        var freqDisplay = $("<td>" + freqNow + "</td>");
+        var nextDisplay = $("<td>#</td>");
+        var awayDisplay = $("<td>#</td>");
+        var nextTrain = nextRow.append(nameDisplay, destDisplay, freqDisplay, nextDisplay, awayDisplay);
+        $("#new-train-row").append(nextTrain);
 
       })
 
