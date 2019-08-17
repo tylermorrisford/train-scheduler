@@ -3,3 +3,8 @@
     margin: auto;
     padding-bottom: 20px;
 }
+
+.jumbotron {
+    background-image: url("assets/train.jpg");
+    
+}
