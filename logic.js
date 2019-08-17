@@ -60,44 +60,43 @@ $("#current-day").text(currentDay);
         // Logic for calculating Next Arrival / Minutes Away (or next departure)   
 //         compare startNow to moment() current time 
 //             // Assumptions
-    // var tFrequency = 3;
+    console.log(freqNow);
 
-    // // Time is 3:30 AM
-    // var firstTime = "03:30";
+    console.log(firstTrainString);
 
-    // // First Time (pushed back 1 year to make sure it comes before current time)
-    // var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-    // console.log(firstTimeConverted);
+    // First Time (pushed back 1 year to make sure it comes before current time)
+    var firstTrain = moment(firstTrainString, "HH:mm").subtract(1, "years");
+    console.log(firstTrain);
 
-    // // Current Time
-    // var currentTime = moment();
-    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-    // // Difference between the times
-    // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    // console.log("DIFFERENCE IN TIME: " + diffTime);
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstTrain), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
 
-    // // Time apart (remainder)
-    // var tRemainder = diffTime % tFrequency;
-    // console.log(tRemainder);
+    // Time apart (remainder)
+    var tRemainder = diffTime % freqNow;
+    console.log(tRemainder);
 
-    // // Minute Until Train
-    // var tMinutesTillTrain = tFrequency - tRemainder;
-    // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    // Minute Until Train
+    var tMinutesTillTrain = freqNow - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-    // // Next Train
-    // var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm")); 
+    // Next Train
+    var nextTrainMilliseconds = moment().add(tMinutesTillTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrainMilliseconds).format("hh:mm")); 
+    var nextTrain = moment(nextTrainMilliseconds).format("hh:mm");
 // 
-var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-console.log("this time is: " + currentTime);
+
     // logic for building next row in table
         var nextRow = $("<tr>");
         var nameDisplay = $("<td>" + nameNow + "</td>");
         var destDisplay = $("<td>" + destNow + "</td>");
         var freqDisplay = $("<td>" + freqNow + "</td>");
-        var nextDisplay = $("<td>#</td>");
-        var awayDisplay = $("<td>#</td>");
+        var nextDisplay = $("<td>" + nextTrain + "</td>");
+        var awayDisplay = $("<td>" + tMinutesTillTrain + "</td>");
         var nextTrain = nextRow.append(nameDisplay, destDisplay, freqDisplay, nextDisplay, awayDisplay);
         $("#new-train-row").append(nextTrain);
 
