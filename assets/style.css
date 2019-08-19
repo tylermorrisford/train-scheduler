@@ -2,9 +2,9 @@
     width: 90%;
     margin: auto;
     padding-bottom: 20px;
+    background-image: url("assets/train.jpeg");
 }
 
 .jumbotron {
-    background-image: url("assets/train.jpg");
-    
+    background-color: aqua;
 }
