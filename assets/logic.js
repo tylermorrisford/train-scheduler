@@ -30,24 +30,34 @@ var database = firebase.database();
 
 $("#newTrain").on("click", function (event) {
     event.preventDefault();
-    var newTrain = $("#train").val().trim();
-    var newDestination = $("#destination").val().trim();
-    var newStart = $("#start-time").val().trim();
-    var newFreq = $("#frequency").val().trim();
+    // if user submits form with a blank input
+    if ( $("#train").val() === "" || $("#destination").val() === "" || $("#start-time").val() === "" || $("#frequency").val()=== "" ) {
+        alert("Please enter train information using alphanumerics instead of E.S.P.");
+        $("#train").val("");
+        $("#destination").val("");
+        $("#start-time").val("");
+        $("#frequency").val("");
+    } else {
 
-    database.ref().push({
-        name: newTrain,
-        destination: newDestination,
-        start: newStart,
-        frequency: newFreq,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        var newTrain = $("#train").val().trim();
+        var newDestination = $("#destination").val().trim();
+        var newStart = $("#start-time").val().trim();
+        var newFreq = $("#frequency").val().trim();
+        
+        database.ref().push({
+            name: newTrain,
+            destination: newDestination,
+            start: newStart,
+            frequency: newFreq,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        })
+        // empty the form on submit 
+        $("#train").val("");
+        $("#destination").val("");
+        $("#start-time").val("");
+        $("#frequency").val("");
+    }
     })
-    // empty the form on submit 
-    $("#train").val("");
-    $("#destination").val("");
-    $("#start-time").val("");
-    $("#frequency").val("");
-})
 // database ref retrieves train data to display
 database.ref().on("child_added", function (snapshot) {
     var nameNow = snapshot.val().name;
