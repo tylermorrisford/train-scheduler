@@ -1,76 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- firebase -->
-    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-    <!-- Moment js -->
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-    <link rel="stylesheet" href="assets/style.css">
-    <title>trainscheduler!</title>
-
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-database.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- Moment js -->
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+  <link rel="stylesheet" href="assets/style.css">
+  <title>trainscheduler!</title>
 </head>
 <body>
-    <div id="container">
-            <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                      <h1 class="display-4">Train Schedules</h1>
-                      <p class="lead">A directory of train frequencies and arrival times for <span id="current-day"></span>.</p>
-                      <p>Current Local time is <span id="local-time"></span>.</p>
-                    </div>
-                  </div>
-                        <h5 class="card-title">Current Train Schedule</h5>
-                        <div class="container">
-                                <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">Train Name</th>
-                                            <th scope="col">Destination</th>
-                                            <th scope="col">Frequency (min)</th>
-                                            <th scope="col">Next Arrival</th>
-                                            <th scope="col">Minutes Away</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody id="new-train-row">
-                                        </tbody>
-                                      </table>
-                              </div>
-                              <hr>
-                              <form>
-                                    <div class="form-group">
-                                      <label >Train Name</label>
-                                      <input type="train-name-input" class="form-control" id="train">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Destination</label>
-                                      <input type="role" class="form-control" id="destination">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>First Train Time (HH:mm)-military time</label>
-                                      <input type="start time" class="form-control" id="start-time" placeholder="First train starting time">
-                                    </div>
-                                    <div class="form-group">
-                                      <label>Frequency(minutes)</label>
-                                      <input type="monthly rate" class="form-control" id="frequency" placeholder="eg. 30">
-                                    </div>
-                                    <button type="submit" id="newTrain" class="btn btn-primary">Submit</button>
-                                  </form>
-                      </div>
-
+  <div id="container">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Train Schedules</h1>
+        <p class="lead">A directory of train frequencies and arrival times for <span id="current-day"></span>.</p>
+        <p>Current Local time is <span id="local-time"></span>.</p>
+      </div>
     </div>
-    
-
-
-    <script src="assets/logic.js"></script>
+    <h5 class="card-title">Current Train Schedule</h5>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Train Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Frequency (min)</th>
+            <th scope="col">Next Arrival</th>
+            <th scope="col">Minutes Away</th>
+          </tr>
+        </thead>
+        <tbody id="new-train-row">
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    <form>
+      <div class="form-group">
+        <label>Train Name</label>
+        <input type="train-name-input" class="form-control" id="train">
+      </div>
+      <div class="form-group">
+        <label>Destination</label>
+        <input type="role" class="form-control" id="destination">
+      </div>
+      <div class="form-group">
+        <label>First Train Time (HH:mm)-military time</label>
+        <input type="start time" class="form-control" id="start-time" placeholder="First train starting time">
+      </div>
+      <div class="form-group">
+        <label>Frequency(minutes)</label>
+        <input type="monthly rate" class="form-control" id="frequency" placeholder="eg. 30">
+      </div>
+      <button type="submit" id="newTrain" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  </div>
+  <script src="assets/logic.js"></script>
 </body>
+
 </html>
