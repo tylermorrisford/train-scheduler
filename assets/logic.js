@@ -38,7 +38,6 @@ $("#newTrain").on("click", function (event) {
         $("#start-time").val("");
         $("#frequency").val("");
     } else {
-
         var newTrain = $("#train").val().trim();
         var newDestination = $("#destination").val().trim();
         var newStart = $("#start-time").val().trim();
