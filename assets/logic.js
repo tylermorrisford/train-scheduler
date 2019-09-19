@@ -13,7 +13,7 @@ $("#current-day").text(currentDay);
 
 
 // train scheduler logic.js
-// Firebase config_____________________________________
+// Firebase config_________
 var firebaseConfig = {
     apiKey: "AIzaSyCXoEOxIg_8unXVQZOjhdwPqI-LHNbjwO8",
     authDomain: "trainscheduler-bc2019.firebaseapp.com",
@@ -24,7 +24,7 @@ var firebaseConfig = {
     appId: "1:314757289892:web:2f889d1064715d3e"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig); 
 
 var database = firebase.database();
 
@@ -64,7 +64,7 @@ database.ref().on("child_added", function (snapshot) {
     var firstTrainString = snapshot.val().start;
     var freqNow = snapshot.val().frequency;
 
-    // Logic for calculating Next Arrival / Minutes Away (or next departure)____________________________________   
+    // Logic for calculating Next Arrival / Minutes Away (or next departure)  
     // First Time (pushed back 1 year to make sure it comes before current time)
     var firstTrain = moment(firstTrainString, "HH:mm").subtract(1, "years");
     // Difference between the times

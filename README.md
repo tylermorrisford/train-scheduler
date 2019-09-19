@@ -10,7 +10,7 @@ This scheduling tool uses Firebase to store data and display a snapshot of that 
 # How it works
 Users can submit a train name, destination, time of first train, and train frequency. An if statement blocks blank submissions. Submissions that include data are pushed to Firebase as an object, and the form data is 'emptied'.  
 
-Using the child_added event, a snapshot of the database is retrieved each time new train data is added, and each child's data is used(with Moment js) to calculate the next departure time for each train, and the length of time in minutes the next departure time is from now. Important note: Moment js is used to begin the first train time *1 year ago* in order to ensure the time happens before now.
+Using the child_added event, a snapshot of the database is retrieved each time new train data is added, then each child's data is used(with Moment js) to calculate the next departure time for each train, and the length of time in minutes the next departure time is from now. Important note: Moment js is used to begin the first train time *1 year ago* in order to ensure the time happens before now.
 
 In the Bootstrap jumbotron, Moment js is used to display the date and current local time. 
 
@@ -25,6 +25,4 @@ Create the train of your dreams, choose a romantic train name, pick a destinatio
 
  
 # User Feedback
-Felt strange showing this one to people, so... I didn't! I did, however, complain about Firebase a lot. 
-
 Please pour one out for the folks who made Moment js. 
